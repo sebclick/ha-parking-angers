@@ -6,7 +6,7 @@ from datetime import timedelta
 from typing import Final
 
 DOMAIN: Final = "parking_angers"
-VERSION: Final = "0.1.0"
+VERSION: Final = "0.1.1"
 
 API_BASE_URL: Final = "https://data.angers.fr/api/explore/v2.1/catalog/datasets"
 REALTIME_DATASET: Final = "parking-angers"
