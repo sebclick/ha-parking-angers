@@ -6,6 +6,8 @@ from datetime import UTC, datetime
 from typing import Any
 
 import aiohttp
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import pytest
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
@@ -17,8 +19,6 @@ from custom_components.parking_angers.api import (
     _parse_reset,
 )
 from custom_components.parking_angers.const import USER_AGENT
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .conftest import REALTIME_URL, REFERENCE_URL, load_fixture
 

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
+from homeassistant.core import HomeAssistant
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
@@ -21,7 +22,6 @@ from custom_components.parking_angers.const import (
     REALTIME_DATASET,
     REFERENCE_DATASET,
 )
-from homeassistant.core import HomeAssistant
 
 FIXTURES = Path(__file__).parent / "fixtures"
 REALTIME_URL = f"{API_BASE_URL}/{REALTIME_DATASET}/records"
@@ -84,7 +84,7 @@ def set_reference(aioclient_mock: AiohttpClientMocker, **kwargs: Any) -> None:
 
 
 OPTIONS = {
-    CONF_PARKINGS: ["Ralliement", "Mail", "Chateau", "Saint Laud 2"],
+    CONF_PARKINGS: ["Ralliement", "Mail", "Chateau", "Saint Laud 2", "Confluences"],
     CONF_SCAN_INTERVAL: 10,
     CONF_FULL_THRESHOLD: 95,
 }

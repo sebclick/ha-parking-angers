@@ -98,6 +98,8 @@ def test_dirty_reference_values() -> None:
         (0, 10, None),
     ],
 )
-def test_occupancy(capacity: int | None, available: int, expected: float | None) -> None:
+def test_occupancy(
+    capacity: int | None, available: int, expected: float | None
+) -> None:
     static = ParkingStatic(key="x", ref_id=None, name="x", capacity=capacity)
     assert ParkingState(static=static, available=available).occupancy == expected

@@ -1,0 +1,19 @@
+{
+  "entity": {
+    "sensor": {
+      "available_spaces": { "default": "mdi:parking" },
+      "occupancy": { "default": "mdi:car-multiple" },
+      "capacity": { "default": "mdi:garage" }
+    },
+    "binary_sensor": {
+      "full": {
+        "default": "mdi:parking",
+        "state": { "on": "mdi:car-off" }
+      },
+      "stale_data": {
+        "default": "mdi:database-check",
+        "state": { "on": "mdi:database-alert" }
+      }
+    }
+  }
+}
