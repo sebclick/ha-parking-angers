@@ -1,0 +1,13 @@
+{
+  "domain": "parking_angers",
+  "name": "Parking Angers",
+  "codeowners": ["@sebclick"],
+  "config_flow": true,
+  "documentation": "https://github.com/sebclick/ha-parking-angers",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/sebclick/ha-parking-angers/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}

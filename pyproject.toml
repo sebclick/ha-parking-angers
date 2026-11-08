@@ -1,0 +1,32 @@
+[project]
+name = "ha-parking-angers"
+version = "0.1.0"
+description = "Home Assistant custom integration for Angers (ALTER) car parks availability"
+requires-python = ">=3.14"
+license = "MIT"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "ASYNC", "PTH", "D"]
+ignore = ["D203", "D213", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+"scripts/**" = ["D"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_components.parking_angers"]
+force-sort-within-sections = true
+combine-as-imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["custom_components.parking_angers"]
