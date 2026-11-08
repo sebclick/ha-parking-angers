@@ -1,0 +1,110 @@
+# serializer version: 1
+# name: test_diagnostics
+  dict({
+    'last_change': '2026-11-08T12:00:00+00:00',
+    'last_fetch': '2026-11-08T12:00:00+00:00',
+    'last_realtime_response': dict({
+      'results': list([
+        dict({
+          'disponible': 13,
+          'nom': 'Republique',
+        }),
+        dict({
+          'disponible': 36,
+          'nom': 'Saint Laud',
+        }),
+        dict({
+          'disponible': 206,
+          'nom': 'Marengo',
+        }),
+        dict({
+          'disponible': 46,
+          'nom': 'Maternite',
+        }),
+        dict({
+          'disponible': 30,
+          'nom': 'Larrey',
+        }),
+        dict({
+          'disponible': 31,
+          'nom': 'Confluences',
+        }),
+        dict({
+          'disponible': 14,
+          'nom': 'Leclerc',
+        }),
+        dict({
+          'disponible': 40,
+          'nom': 'Mitterrand Rennes',
+        }),
+        dict({
+          'disponible': 12,
+          'nom': 'Ralliement',
+        }),
+        dict({
+          'disponible': 148,
+          'nom': 'Mail',
+        }),
+        dict({
+          'disponible': 35,
+          'nom': 'Saint Serge Patinoire',
+        }),
+        dict({
+          'disponible': 167,
+          'nom': 'Chateau',
+        }),
+        dict({
+          'disponible': 54,
+          'nom': 'Moliere',
+        }),
+        dict({
+          'disponible': 86,
+          'nom': 'Bressigny',
+        }),
+        dict({
+          'disponible': 66,
+          'nom': 'Haras Public',
+        }),
+        dict({
+          'disponible': 114,
+          'nom': 'Berges De Maine',
+        }),
+        dict({
+          'disponible': 31,
+          'nom': 'Mitterrand Maine',
+        }),
+        dict({
+          'disponible': 155,
+          'nom': 'Saint Laud 2',
+        }),
+        dict({
+          'disponible': 120,
+          'nom': 'Quai',
+        }),
+        dict({
+          'disponible': 42,
+          'nom': 'Nouveau',
+        }),
+      ]),
+      'total_count': 19,
+    }),
+    'last_update_success': True,
+    'options': dict({
+      'full_threshold': 95,
+      'parkings': list([
+        'Ralliement',
+        'Mail',
+        'Chateau',
+        'Saint Laud 2',
+        'Confluences',
+      ]),
+      'scan_interval': 10,
+    }),
+    'parking_count': 20,
+    'reference_loaded_at': '2026-11-08T12:00:00+00:00',
+    'stale': False,
+    'unmapped': list([
+      'Nouveau',
+    ]),
+  })
+# ---
