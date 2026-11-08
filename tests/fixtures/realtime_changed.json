@@ -1,0 +1,81 @@
+{
+    "total_count": 19,
+    "results": [
+        {
+            "disponible": 20,
+            "nom": "Republique"
+        },
+        {
+            "disponible": 36,
+            "nom": "Saint Laud"
+        },
+        {
+            "disponible": 206,
+            "nom": "Marengo"
+        },
+        {
+            "disponible": 46,
+            "nom": "Maternite"
+        },
+        {
+            "disponible": 30,
+            "nom": "Larrey"
+        },
+        {
+            "disponible": 31,
+            "nom": "Confluences"
+        },
+        {
+            "disponible": 14,
+            "nom": "Leclerc"
+        },
+        {
+            "disponible": 40,
+            "nom": "Mitterrand Rennes"
+        },
+        {
+            "disponible": 12,
+            "nom": "Ralliement"
+        },
+        {
+            "disponible": 150,
+            "nom": "Mail"
+        },
+        {
+            "disponible": 35,
+            "nom": "Saint Serge Patinoire"
+        },
+        {
+            "disponible": 167,
+            "nom": "Chateau"
+        },
+        {
+            "disponible": 54,
+            "nom": "Moliere"
+        },
+        {
+            "disponible": 86,
+            "nom": "Bressigny"
+        },
+        {
+            "disponible": 66,
+            "nom": "Haras Public"
+        },
+        {
+            "disponible": 114,
+            "nom": "Berges De Maine"
+        },
+        {
+            "disponible": 31,
+            "nom": "Mitterrand Maine"
+        },
+        {
+            "disponible": 155,
+            "nom": "Saint Laud 2"
+        },
+        {
+            "disponible": 118,
+            "nom": "Quai"
+        }
+    ]
+}
