@@ -1,7 +1,13 @@
 {
   "domain": "parking_angers",
   "name": "Parking Angers",
-  "codeowners": ["@sebclick"],
+  "categories": [
+    "vehicles_transport",
+    "local_services"
+  ],
+  "codeowners": [
+    "@sebclick"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/sebclick/ha-parking-angers",
   "integration_type": "service",
