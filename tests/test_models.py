@@ -103,3 +103,38 @@ def test_occupancy(
 ) -> None:
     static = ParkingStatic(key="x", ref_id=None, name="x", capacity=capacity)
     assert ParkingState(static=static, available=available).occupancy == expected
+
+
+@pytest.mark.parametrize(
+    ("url", "expected"),
+    [
+        ("https://parking-angers.fr/p/", "https://parking-angers.fr/p/"),
+        ("http://parking-angers.fr", "http://parking-angers.fr"),
+        ("parking-angers.fr/p/", None),
+        ("javascript:alert(1)", None),
+        ("ftp://parking-angers.fr", None),
+        ("https://", None),
+        ("http://[::1", None),
+        (None, None),
+    ],
+)
+def test_url_validation(url: str | None, expected: str | None) -> None:
+    assert ParkingStatic.from_dict("x", {"url": url}).url == expected
+    merged = ParkingStatic.from_dict("x", {"url": "https://ok.fr"}).merged_with(
+        {"url": url}
+    )
+    assert merged.url == (expected or "https://ok.fr")
+
+
+@pytest.mark.parametrize(
+    ("lat", "lon", "expected"),
+    [
+        ("47.47", "-0.55", (47.47, -0.55)),
+        ("nan", "inf", (None, None)),
+        ("91", "-181", (None, None)),
+        ("-90", "180", (-90.0, 180.0)),
+    ],
+)
+def test_coordinates_validation(lat: str, lon: str, expected: tuple) -> None:
+    static = ParkingStatic.unknown("x").merged_with({"ylat": lat, "xlong": lon})
+    assert (static.latitude, static.longitude) == expected

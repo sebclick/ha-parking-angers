@@ -9,8 +9,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field, fields
 from datetime import datetime
 import json
+import math
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 RATE_KEYS: tuple[str, ...] = ("1h", "2h", "3h", "4h", "24h")
 
@@ -28,9 +30,26 @@ def _to_float(value: Any) -> float | None:
     if value is None or isinstance(value, bool):
         return None
     try:
-        return float(str(value).replace(",", "."))
+        result = float(str(value).replace(",", "."))
     except TypeError, ValueError:
         return None
+    return result if math.isfinite(result) else None
+
+
+def _to_coordinate(value: Any, limit: float) -> float | None:
+    result = _to_float(value)
+    return result if result is not None and -limit <= result <= limit else None
+
+
+def _to_url(value: Any) -> str | None:
+    """Keep only absolute http(s) URLs (Home Assistant rejects anything else)."""
+    if (value := _to_str(value)) is None:
+        return None
+    try:
+        parts = urlsplit(value)
+    except ValueError:
+        return None
+    return value if parts.scheme in ("http", "https") and parts.hostname else None
 
 
 def _to_str(value: Any) -> str | None:
@@ -81,9 +100,9 @@ class ParkingStatic:
             name=_to_str(data.get("name")) or key,
             capacity=_to_int(data.get("capacity")),
             address=_to_str(data.get("address")),
-            latitude=_to_float(data.get("latitude")),
-            longitude=_to_float(data.get("longitude")),
-            url=_to_str(data.get("url")),
+            latitude=_to_coordinate(data.get("latitude"), 90),
+            longitude=_to_coordinate(data.get("longitude"), 180),
+            url=_to_url(data.get("url")),
             max_height_m=_to_float(data.get("max_height_m")),
             structure_type=_to_str(data.get("structure_type")),
             free=_to_bool(data.get("free")),
@@ -124,9 +143,9 @@ def reference_to_fields(raw: dict[str, Any]) -> dict[str, Any]:
         "name": _to_str(raw.get("nom")),
         "capacity": _to_int(raw.get("nb_places")),
         "address": _to_str(raw.get("adresse")),
-        "latitude": _to_float(raw.get("ylat")),
-        "longitude": _to_float(raw.get("xlong")),
-        "url": _to_str(raw.get("url")),
+        "latitude": _to_coordinate(raw.get("ylat"), 90),
+        "longitude": _to_coordinate(raw.get("xlong"), 180),
+        "url": _to_url(raw.get("url")),
         "max_height_m": round(height_cm / 100, 2) if height_cm else None,
         "structure_type": _to_str(raw.get("type_ouvrage")),
         "free": _to_bool(raw.get("gratuit")),

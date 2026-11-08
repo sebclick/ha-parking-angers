@@ -195,10 +195,11 @@ async def test_update_failure_and_rate_limit(
     # The next refresh is postponed to the quota reset.
     assert coordinator._retry_after == 2 * 3600
 
+    # No reset header: wait for the normal interval.
     set_realtime(mock_api, status=429, json={"error_code": "TooManyRequests"})
     with pytest.raises(UpdateFailed) as err:
         await coordinator._async_update_data()
-    assert err.value.retry_after is None
+    assert err.value.retry_after == 600
 
     set_realtime(mock_api, json=load_fixture("realtime.json"))
     await coordinator.async_refresh()
@@ -254,3 +255,37 @@ async def test_issue_removed_on_unload(
     assert issues.async_get_issue(DOMAIN, ISSUE_STALE_DATA) is not None
     await hass.config_entries.async_unload(init_integration.entry_id)
     assert issues.async_get_issue(DOMAIN, ISSUE_STALE_DATA) is None
+
+
+@pytest.mark.parametrize(
+    ("reset", "expected"),
+    [
+        # Real format sent by data.angers.fr
+        ("2026-11-09 00:00:00+00:00", 2 * 3600),
+        # Already past: must not retry immediately (request loop)
+        ("2026-11-08 00:00:00+00:00", 600),
+        # Absurdly far: capped to 24 h
+        ("2027-11-09 00:00:00+00:00", 24 * 3600),
+        # Sooner than the normal interval: normal interval
+        ("2026-11-08 22:01:00+00:00", 600),
+    ],
+)
+async def test_rate_limit_retry_bounds(
+    hass: HomeAssistant,
+    freezer: FrozenDateTimeFactory,
+    init_integration: MockConfigEntry,
+    mock_api: AiohttpClientMocker,
+    reset: str,
+    expected: float,
+) -> None:
+    coordinator = _coordinator(init_integration)
+    freezer.move_to("2026-11-08 22:00:00+00:00")
+    set_realtime(
+        mock_api,
+        status=429,
+        json={"error_code": "TooManyRequests"},
+        headers={"X-RateLimit-Reset": reset},
+    )
+    with pytest.raises(UpdateFailed) as err:
+        await coordinator._async_update_data()
+    assert err.value.retry_after == expected

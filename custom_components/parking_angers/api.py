@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+import json
 import logging
 from typing import Any
 
@@ -13,6 +14,8 @@ from .const import (
     API_LIMIT,
     API_TIMEOUT,
     DEPRECATION_HEADER,
+    MAX_NAME_LENGTH,
+    MAX_RESPONSE_BYTES,
     REALTIME_DATASET,
     REFERENCE_DATASET,
     USER_AGENT,
@@ -91,12 +94,7 @@ class ParkingAngersApi:
                     raise ParkingAngersConnectionError(
                         f"Server error {resp.status} on {dataset}"
                     )
-                try:
-                    payload = await resp.json(content_type=None)
-                except ValueError as err:
-                    raise ParkingAngersResponseError(
-                        f"Invalid JSON from {dataset}"
-                    ) from err
+                payload = await self._read_json(resp, dataset)
                 if resp.status >= 400:
                     detail = payload if isinstance(payload, dict) else {}
                     raise ParkingAngersResponseError(
@@ -122,6 +120,21 @@ class ParkingAngersApi:
             )
         return payload
 
+    @staticmethod
+    async def _read_json(resp: aiohttp.ClientResponse, dataset: str) -> Any:
+        """Read and decode the body, refusing oversized responses."""
+        body = bytearray()
+        async for chunk in resp.content.iter_chunked(64 * 1024):
+            body.extend(chunk)
+            if len(body) > MAX_RESPONSE_BYTES:
+                raise ParkingAngersResponseError(
+                    f"Response from {dataset} exceeds {MAX_RESPONSE_BYTES} bytes"
+                )
+        try:
+            return json.loads(body)
+        except ValueError as err:
+            raise ParkingAngersResponseError(f"Invalid JSON from {dataset}") from err
+
     async def async_get_availability(self) -> dict[str, int]:
         """Return the number of free spaces by real-time ``nom``."""
         payload = await self._get_records(REALTIME_DATASET)
@@ -133,10 +146,18 @@ class ParkingAngersApi:
                 continue
             name = record.get("nom")
             available = record.get("disponible")
-            if not isinstance(name, str) or not name.strip():
-                _LOGGER.debug("Ignoring record without nom: %r", record)
+            if (
+                not isinstance(name, str)
+                or not name.strip()
+                or len(name.strip()) > MAX_NAME_LENGTH
+            ):
+                _LOGGER.debug("Ignoring record with invalid nom: %r", record)
                 continue
-            if not isinstance(available, int) or isinstance(available, bool):
+            if (
+                not isinstance(available, int)
+                or isinstance(available, bool)
+                or available < 0
+            ):
                 _LOGGER.debug("Ignoring record with invalid disponible: %r", record)
                 continue
             result[name.strip()] = available

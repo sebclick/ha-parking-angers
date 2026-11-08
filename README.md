@@ -123,6 +123,8 @@ entities:
 - **La source n'est pas vraiment temps réel**, et il arrive que le flux de data.angers.fr reste figé
   pendant des heures. Le capteur « Données figées » et le signalement Réparations sont là pour ça :
   les autres capteurs restent disponibles avec la dernière valeur connue, à vous de juger.
+  Le délai de 3 heures repart de zéro à chaque redémarrage de Home Assistant ou rechargement de
+  l'intégration (y compris après un changement d'options).
 - **Correspondance des parkings** : le flux temps réel utilise des noms techniques (`Republique`,
   `Berges De Maine`…) qui ne correspondent pas aux identifiants du jeu de référence. La table de
   correspondance a été reconstituée à la main. Deux associations restent à confirmer :
@@ -133,7 +135,7 @@ entities:
   et seulement le nombre de places libres (sans capacité, ni taux d'occupation, ni « Complet »).
   Si un parking est renommé côté source, de nouvelles entités sont créées.
 - **Quota** : l'API anonyme autorise 5 000 requêtes par jour et par adresse IP. En cas de dépassement,
-  l'intégration attend la remise à zéro du quota (minuit UTC).
+  l'intégration attend la remise à zéro du quota (minuit UTC), sans jamais patienter plus de 24 heures.
 - Les attributs statiques (position, tarifs…) ne sont pas enregistrés dans l'historique.
 
 ## Dépannage
@@ -153,7 +155,7 @@ réponse brute de l'API, l'état de la détection des données figées et la lis
 
 ```bash
 uv venv --python 3.14 && source .venv/bin/activate
-uv pip install -r requirements_test.txt ruff syrupy pytest-cov
+uv pip install -r requirements_test.txt
 pytest --cov=custom_components.parking_angers --cov-report=term-missing
 ruff check . && ruff format --check .
 ```

@@ -1,6 +1,6 @@
 [project]
 name = "ha-parking-angers"
-version = "0.1.1"
+version = "0.1.2"
 description = "Home Assistant custom integration for Angers (ALTER) car parks availability"
 requires-python = ">=3.14"
 license = "MIT"

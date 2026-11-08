@@ -17,7 +17,7 @@ from custom_components.parking_angers.const import (
 )
 from custom_components.parking_angers.sensor import AvailableSpacesSensor
 
-from .conftest import set_realtime
+from .conftest import set_realtime, set_reference
 
 
 def entity_id(hass: HomeAssistant, platform: str, unique_id: str) -> str | None:
@@ -178,3 +178,24 @@ async def test_french_names(
     assert hass.states.get("sensor.parking_du_chateau_capacite").state == "300"
     assert hass.states.get("binary_sensor.parking_du_ralliement_complet").state == "on"
     assert hass.states.get("binary_sensor.open_data_angers_donnees_figees")
+
+
+async def test_invalid_reference_url_keeps_entities(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    mock_api: AiohttpClientMocker,
+    reference: dict,
+) -> None:
+    for record in reference["results"]:
+        if record["id"] == "49007-P-006":
+            record["url"] = "parking-angers.fr/ralliement"
+    set_reference(mock_api, json=reference)
+    await hass.config_entries.async_setup(config_entry.entry_id)
+    await hass.async_block_till_done()
+    assert state(hass, "sensor", "ralliement_available_spaces").state == "12"
+    device = dr.async_get(hass).async_get_device_by_identifier(
+        (DOMAIN, "Ralliement"), config_entry.entry_id
+    )
+    assert (
+        device.configuration_url == "http://parking-angers.fr/parking-du-ralliement-2/"
+    )

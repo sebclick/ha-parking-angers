@@ -76,6 +76,8 @@ async def test_dirty_records(
                 {"nom": "", "disponible": 4},
                 {"nom": "Text", "disponible": "12"},
                 {"nom": "Bool", "disponible": True},
+                {"nom": "Negative", "disponible": -3},
+                {"nom": "x" * 101, "disponible": 5},
                 "garbage",
                 {"nom": " Spaced ", "disponible": 0},
             ],
@@ -179,8 +181,22 @@ async def test_rate_limit(
         ("1794182400", datetime(2026, 11, 9, tzinfo=UTC)),
         ("2026-11-09T00:00:00", datetime(2026, 11, 9, tzinfo=UTC)),
         ("2026-11-09T01:00:00+01:00", datetime(2026, 11, 9, tzinfo=UTC)),
+        ("2026-11-09 00:00:00+00:00", datetime(2026, 11, 9, tzinfo=UTC)),
+        ("1e400", None),
+        ("nan", None),
         ("tomorrow", None),
     ],
 )
 def test_parse_reset(value: str | None, expected: datetime | None) -> None:
     assert _parse_reset(value) == expected
+
+
+async def test_oversized_response(
+    api: ParkingAngersApi, aioclient_mock: AiohttpClientMocker
+) -> None:
+    aioclient_mock.get(
+        REALTIME_URL,
+        text='{"results": [], "padding": "' + "x" * (3 * 1024 * 1024) + '"}',
+    )
+    with pytest.raises(ParkingAngersResponseError, match="exceeds"):
+        await api.async_get_availability()

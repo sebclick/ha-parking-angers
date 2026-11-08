@@ -18,6 +18,7 @@ from .const import (
     DEFAULT_SCAN_INTERVAL,
     DOMAIN,
     ISSUE_STALE_DATA,
+    MAX_RETRY_AFTER,
     REFERENCE_REFRESH,
     STALE_AFTER,
 )
@@ -70,13 +71,9 @@ class ParkingAngersCoordinator(DataUpdateCoordinator[ParkingData]):
         try:
             values = await self.api.async_get_availability()
         except ParkingAngersRateLimitError as err:
-            retry_after = (
-                max((err.retry_after - now).total_seconds(), 0)
-                if err.retry_after
-                else None
-            )
+            retry_after = self._retry_delay(err.retry_after, now)
             raise UpdateFailed(
-                f"API quota exceeded, retrying after {err.retry_after}",
+                f"API quota exceeded, retrying in {retry_after:.0f} s",
                 retry_after=retry_after,
             ) from err
         except ParkingAngersError as err:
@@ -118,6 +115,17 @@ class ParkingAngersCoordinator(DataUpdateCoordinator[ParkingData]):
             parkings=parkings, stale=self._stale, last_change=self.last_change
         )
 
+    def _retry_delay(self, reset: datetime | None, now: datetime) -> float:
+        """Seconds to wait after a 429, never shorter than the normal interval.
+
+        A reset instant already past (clock skew, stale header) would otherwise
+        make the coordinator retry immediately, in a loop; one far in the future
+        would freeze the integration.
+        """
+        interval = self.update_interval or timedelta(0)
+        delay = (reset - now) if reset else interval
+        return min(max(delay, interval), MAX_RETRY_AFTER).total_seconds()
+
     async def _async_refresh_reference(self, now: datetime) -> None:
         """Reload the reference dataset when needed; never raises."""
         if self._reference_next_attempt and now < self._reference_next_attempt:
@@ -139,8 +147,7 @@ class ParkingAngersCoordinator(DataUpdateCoordinator[ParkingData]):
         if self._last_values is None or values != self._last_values:
             self.last_change = now
         self._last_values = values
-        assert self.last_change is not None
-        stale = now - self.last_change >= STALE_AFTER
+        stale = now - (self.last_change or now) >= STALE_AFTER
         if stale and not self._stale:
             _LOGGER.warning(
                 "data.angers.fr values have not changed since %s", self.last_change
