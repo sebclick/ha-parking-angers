@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Angers car parks",
+        "description": "Select the car parks to follow.\n\nData: ALTER / data.angers.fr – ODbL licence.",
+        "data": {
+          "parkings": "Car parks",
+          "scan_interval": "Update interval",
+          "full_threshold": "Full threshold"
+        },
+        "data_description": {
+          "parkings": "One device is created for each selected car park.",
+          "scan_interval": "How often data.angers.fr is polled, in minutes (the source is not truly real time).",
+          "full_threshold": "Occupancy rate from which a car park is considered full."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to reach data.angers.fr. Submit again to retry.",
+      "no_parking_selected": "Select at least one car park."
+    },
+    "abort": {
+      "single_instance_allowed": "Parking Angers is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Angers car parks",
+        "description": "Data: ALTER / data.angers.fr – ODbL licence.",
+        "data": {
+          "parkings": "Car parks",
+          "scan_interval": "Update interval",
+          "full_threshold": "Full threshold"
+        },
+        "data_description": {
+          "parkings": "Devices of unselected car parks are removed.",
+          "scan_interval": "How often data.angers.fr is polled, in minutes (the source is not truly real time).",
+          "full_threshold": "Occupancy rate from which a car park is considered full."
+        }
+      }
+    },
+    "error": {
+      "no_parking_selected": "Select at least one car park."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "available_spaces": { "name": "Free spaces" },
+      "occupancy": { "name": "Occupancy" },
+      "capacity": { "name": "Capacity" }
+    },
+    "binary_sensor": {
+      "full": { "name": "Full" },
+      "stale_data": { "name": "Stale data" }
+    }
+  },
+  "issues": {
+    "stale_data": {
+      "title": "Angers car park data is not updating",
+      "description": "The values published by data.angers.fr have not changed since {last_change}. The real-time feed is probably frozen at the source: the sensors keep showing the last known values.\n\nThis issue disappears by itself as soon as the values change again."
+    }
+  }
+}

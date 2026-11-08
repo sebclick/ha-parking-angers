@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Parkings d'Angers",
+        "description": "Choisissez les parkings à suivre.\n\nDonnées : ALTER / data.angers.fr – licence ODbL.",
+        "data": {
+          "parkings": "Parkings",
+          "scan_interval": "Intervalle de mise à jour",
+          "full_threshold": "Seuil « complet »"
+        },
+        "data_description": {
+          "parkings": "Un appareil est créé pour chaque parking sélectionné.",
+          "scan_interval": "Fréquence d'interrogation de data.angers.fr, en minutes (la source n'est pas vraiment temps réel).",
+          "full_threshold": "Taux d'occupation à partir duquel un parking est considéré comme complet."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre data.angers.fr. Validez à nouveau pour réessayer.",
+      "no_parking_selected": "Sélectionnez au moins un parking."
+    },
+    "abort": {
+      "single_instance_allowed": "Parking Angers est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Parkings d'Angers",
+        "description": "Données : ALTER / data.angers.fr – licence ODbL.",
+        "data": {
+          "parkings": "Parkings",
+          "scan_interval": "Intervalle de mise à jour",
+          "full_threshold": "Seuil « complet »"
+        },
+        "data_description": {
+          "parkings": "Les appareils des parkings décochés sont supprimés.",
+          "scan_interval": "Fréquence d'interrogation de data.angers.fr, en minutes (la source n'est pas vraiment temps réel).",
+          "full_threshold": "Taux d'occupation à partir duquel un parking est considéré comme complet."
+        }
+      }
+    },
+    "error": {
+      "no_parking_selected": "Sélectionnez au moins un parking."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "available_spaces": { "name": "Places libres" },
+      "occupancy": { "name": "Taux d'occupation" },
+      "capacity": { "name": "Capacité" }
+    },
+    "binary_sensor": {
+      "full": { "name": "Complet" },
+      "stale_data": { "name": "Données figées" }
+    }
+  },
+  "issues": {
+    "stale_data": {
+      "title": "Les données des parkings d'Angers ne sont plus mises à jour",
+      "description": "Les valeurs publiées par data.angers.fr n'ont pas changé depuis le {last_change}. Le flux temps réel est probablement figé à la source : les capteurs continuent d'afficher les dernières valeurs connues.\n\nCe signalement disparaît tout seul dès que les valeurs bougent à nouveau."
+    }
+  }
+}
