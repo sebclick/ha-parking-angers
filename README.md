@@ -1,6 +1,6 @@
 # Parking Angers
 
-[![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz)
+[![Marketplace / HACS](https://img.shields.io/badge/Marketplace%20%2F%20HACS-Custom-orange.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=sebclick&repository=ha-parking-angers&category=integration)
 [![Validate](https://github.com/sebclick/ha-parking-angers/actions/workflows/validate.yml/badge.svg)](https://github.com/sebclick/ha-parking-angers/actions/workflows/validate.yml)
 [![Tests](https://github.com/sebclick/ha-parking-angers/actions/workflows/tests.yml/badge.svg)](https://github.com/sebclick/ha-parking-angers/actions/workflows/tests.yml)
 
@@ -27,7 +27,22 @@ et le **taux d'occupation** des parkings d'Angers gérés par ALTER, à partir d
 
 ## Installation
 
-### Via HACS (recommandé)
+### Via la Marketplace (Home Assistant 2026.11 et plus, recommandé)
+
+Depuis Home Assistant 2026.11, HACS est intégré à Home Assistant sous le nom **Marketplace**.
+
+[![Ouvrir dans la Marketplace](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=sebclick&repository=ha-parking-angers&category=integration)
+
+Ou à la main :
+
+1. Ouvrez **Marketplace** dans la barre latérale.
+2. Onglet **Ajouter grâce à un lien** (ou menu ⋮ → **Dépôts personnels**), collez
+   `https://github.com/sebclick/ha-parking-angers` et choisissez le type **Intégration**.
+   L'ajout d'un dépôt personnel demande de connecter la Marketplace à GitHub (en lecture seule).
+3. Ouvrez « Parking Angers » et installez-la.
+4. Redémarrez Home Assistant.
+
+### Via HACS (versions antérieures de Home Assistant)
 
 1. Dans HACS, menu ⋮ → **Dépôts personnalisés**, ajoutez `https://github.com/sebclick/ha-parking-angers`
    avec la catégorie **Intégration**.
