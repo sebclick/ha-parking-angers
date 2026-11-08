@@ -161,3 +161,8 @@ Code sous licence [MIT](LICENSE).
 
 Données : **ALTER / data.angers.fr**, sous licence
 [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1-0/).
+
+Icône (`custom_components/parking_angers/brand/`) : dessin dérivé de la photo
+[« Angers 2012 3 »](https://commons.wikimedia.org/wiki/File:Angers_2012_3.jpg) de Smiley.toerist
+(Wikimedia Commons), sous licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+L'icône est elle-même diffusée sous CC BY-SA 4.0.
