@@ -1,0 +1,401 @@
+{
+  "Berges De Maine": {
+    "ref_id": "49007-P-001",
+    "name": "Parking Saint-Serge Cinéma",
+    "capacity": 305,
+    "address": "26 ALLÉE FRANÇOIS MITTERRAND",
+    "latitude": 47.4791055266,
+    "longitude": -0.5496420046,
+    "url": "http://parking-angers.fr/parking-des-berges-du-maine/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 7,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 1.6,
+      "2h": 3.2,
+      "3h": 4.0,
+      "4h": 4.8,
+      "24h": 11.6
+    }
+  },
+  "Bressigny": {
+    "ref_id": "49007-P-009",
+    "name": "Parking Bressigny",
+    "capacity": 172,
+    "address": "43 RUE BRESSIGNY",
+    "latitude": 47.4673424819,
+    "longitude": -0.5493422409,
+    "url": "http://parking-angers.fr/parking-bressigny-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 7,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 12.8
+    }
+  },
+  "Chateau": {
+    "ref_id": null,
+    "name": "Parking du Château",
+    "capacity": 300,
+    "address": "Rue de Quatrebarbes, 49100 Angers",
+    "latitude": 47.46892,
+    "longitude": -0.561197,
+    "url": "https://parking-angers.fr/parking/parking-chateau/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 6,
+    "ev_chargers": null,
+    "rates": {
+      "1h": null,
+      "2h": null,
+      "3h": null,
+      "4h": null,
+      "24h": null
+    }
+  },
+  "Confluences": {
+    "ref_id": "49007-P-004",
+    "name": "Parking Confluences",
+    "capacity": 30,
+    "address": "26 ALLÉE FRANÇOIS MITTERRAND",
+    "latitude": 47.4806753779,
+    "longitude": -0.5545456512,
+    "url": "http://parking-angers.fr/parking-chu-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": 1,
+    "ev_chargers": 2,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.2,
+      "3h": 2.4,
+      "4h": 3.6,
+      "24h": 9.6
+    }
+  },
+  "Haras Public": {
+    "ref_id": "49007-P-012",
+    "name": "Parking Haras Public",
+    "capacity": 112,
+    "address": "14 ALLÉE DU HARAS",
+    "latitude": 47.4648996364,
+    "longitude": -0.5537654166,
+    "url": "http://parking-angers.fr/parking-du-haras-public/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 2,
+    "ev_chargers": 0,
+    "rates": {
+      "1h": 0.0,
+      "2h": 2.0,
+      "3h": 3.6,
+      "4h": 5.2,
+      "24h": 13.2
+    }
+  },
+  "Larrey": {
+    "ref_id": "49007-P-008",
+    "name": "Parking Larrey",
+    "capacity": 28,
+    "address": "26 ALLÉE FRANÇOIS MITTERRAND",
+    "latitude": 47.4806370511,
+    "longitude": -0.55495124,
+    "url": "http://parking-angers.fr/parking-chu-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": 2,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.2,
+      "3h": 2.4,
+      "4h": 3.6,
+      "24h": 9.6
+    }
+  },
+  "Leclerc": {
+    "ref_id": "49007-P-015",
+    "name": "Parking Leclerc",
+    "capacity": 235,
+    "address": "14 BOULEVARD BESSONNEAU",
+    "latitude": 47.47144192,
+    "longitude": -0.5460560826,
+    "url": "http://parking-angers.fr/parking-leclerc-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": 4,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 12.8
+    }
+  },
+  "Mail": {
+    "ref_id": "49007-P-010",
+    "name": "Parking du Mail",
+    "capacity": 960,
+    "address": "2 AVENUE DU ONZE NOVEMBRE 1918",
+    "latitude": 47.4712547046,
+    "longitude": -0.544924904,
+    "url": "http://parking-angers.fr/parking-du-mail-2/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 20,
+    "ev_chargers": 2,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 0.6
+    }
+  },
+  "Marengo": {
+    "ref_id": "49007-P-016",
+    "name": "Parking Marengo",
+    "capacity": 305,
+    "address": "11 AVENUE TURPIN DE CRISSÉ",
+    "latitude": 47.4648842682,
+    "longitude": -0.55482318,
+    "url": "http://parking-angers.fr/parking-marengo-2/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": 7,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 2.0,
+      "2h": 4.0,
+      "3h": 6.0,
+      "4h": 8.0,
+      "24h": 22.8
+    }
+  },
+  "Maternite": {
+    "ref_id": "49007-P-018",
+    "name": "Parking Maternité",
+    "capacity": 56,
+    "address": "26 ALLÉE FRANÇOIS MITTERRAND",
+    "latitude": 47.481454697,
+    "longitude": -0.5544136239,
+    "url": "http://parking-angers.fr/parking-chu-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": 3,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.2,
+      "3h": 2.4,
+      "4h": 3.6,
+      "24h": 9.6
+    }
+  },
+  "Mitterrand Maine": {
+    "ref_id": "49007-P-007",
+    "name": "Parking Saint-Serge Mitterrand Maine",
+    "capacity": 151,
+    "address": "1 PLACE FRANÇOIS MITTERRAND",
+    "latitude": 47.4772420234,
+    "longitude": -0.5520259119,
+    "url": "http://parking-angers.fr/parking-francois-mitterrand-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": null,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 12.8
+    }
+  },
+  "Mitterrand Rennes": {
+    "ref_id": "49007-P-002",
+    "name": "Parking Saint-Serge Mitterrand",
+    "capacity": 133,
+    "address": "1 PLACE FRANÇOIS MITTERRAND",
+    "latitude": 47.4766083921,
+    "longitude": -0.5505741312,
+    "url": "http://parking-angers.fr/parking-francois-mitterrand-en-enclos/",
+    "max_height_m": 1.9,
+    "structure_type": "enclos_en_surface",
+    "free": false,
+    "pmr_spaces": null,
+    "ev_chargers": 2,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 12.8
+    }
+  },
+  "Moliere": {
+    "ref_id": "49007-P-014",
+    "name": "Parking Molière",
+    "capacity": 416,
+    "address": "37 RUE THIERS",
+    "latitude": 47.4746632157,
+    "longitude": -0.5542768918,
+    "url": "http://parking-angers.fr/parking-moliere-2/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 9,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 0.6
+    }
+  },
+  "Quai": {
+    "ref_id": "49007-P-017",
+    "name": "Parking Le Quai",
+    "capacity": 180,
+    "address": "28 RUE DE LA TANNERIE",
+    "latitude": 47.472633062,
+    "longitude": -0.5650681602,
+    "url": "http://parking-angers.fr/parking-le-quai-2/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": true,
+    "pmr_spaces": 4,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 0.0,
+      "2h": 0.0,
+      "3h": 0.0,
+      "4h": 0.0,
+      "24h": 0.0
+    }
+  },
+  "Ralliement": {
+    "ref_id": "49007-P-006",
+    "name": "Parking du Ralliement",
+    "capacity": 432,
+    "address": "5 PLACE DU RALLIEMENT",
+    "latitude": 47.4712242886,
+    "longitude": -0.5518064832,
+    "url": "http://parking-angers.fr/parking-du-ralliement-2/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 9,
+    "ev_chargers": 3,
+    "rates": {
+      "1h": 0.0,
+      "2h": 2.0,
+      "3h": 4.0,
+      "4h": 6.0,
+      "24h": 20.0
+    }
+  },
+  "Republique": {
+    "ref_id": "49007-P-003",
+    "name": "Parking Fleur d'Eau Les Halles",
+    "capacity": 383,
+    "address": "18 PLACE DE LA RÉPUBLIQUE",
+    "latitude": 47.4725623676,
+    "longitude": -0.5549583804,
+    "url": "http://parking-angers.fr/republique/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 11,
+    "ev_chargers": 6,
+    "rates": {
+      "1h": 0.0,
+      "2h": 1.6,
+      "3h": 3.2,
+      "4h": 4.8,
+      "24h": 0.6
+    }
+  },
+  "Saint Laud": {
+    "ref_id": "49007-P-011",
+    "name": "Parking St Laud",
+    "capacity": 450,
+    "address": "7 ESPLANADE DE LA GARE",
+    "latitude": 47.4644889197,
+    "longitude": -0.5589430207,
+    "url": "http://parking-angers.fr/parking-gare-saint-laud-1/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 10,
+    "ev_chargers": null,
+    "rates": {
+      "1h": 2.0,
+      "2h": 4.0,
+      "3h": 6.0,
+      "4h": 7.2,
+      "24h": 17.2
+    }
+  },
+  "Saint Laud 2": {
+    "ref_id": "49007-P-005",
+    "name": "Parking St Laud II",
+    "capacity": 576,
+    "address": "7 ESPLANADE DE LA GARE",
+    "latitude": 47.4640438607,
+    "longitude": -0.5605046723,
+    "url": "http://parking-angers.fr/parking-gare-saint-laud-2/",
+    "max_height_m": 2.0,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 12,
+    "ev_chargers": 3,
+    "rates": {
+      "1h": 2.0,
+      "2h": 4.0,
+      "3h": 6.0,
+      "4h": 7.2,
+      "24h": 17.2
+    }
+  },
+  "Saint Serge Patinoire": {
+    "ref_id": "49007-P-013",
+    "name": "Parking Saint-Serge Patinoire",
+    "capacity": 234,
+    "address": "RUE DU DOCTEUR BONHOMME",
+    "latitude": 47.479609228,
+    "longitude": -0.5463170241,
+    "url": "https://parking-angers.fr/parking-saint-serge-patinoire/",
+    "max_height_m": 1.9,
+    "structure_type": "ouvrage",
+    "free": false,
+    "pmr_spaces": 5,
+    "ev_chargers": 4,
+    "rates": {
+      "1h": 1.6,
+      "2h": 3.2,
+      "3h": 4.0,
+      "4h": 4.8,
+      "24h": 11.6
+    }
+  }
+}
